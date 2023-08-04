@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reproductor de Videos 01</title>
+</head>
+<body>
+  <h1>Reproductor de Videos 01</h1>
+
+  <div id="video-container">
+    <video id="video-player" controls width="640" height="360" autoplay>
+      <source src="/videos/video01.mp4" type="video/mp4">
+      Tu navegador no soporta el video HTML5.
+    </video>
+    <ul id="video-playlist" style="display: none;" autoplay>
+      <li><button onclick="changeVideo('./videos/video01.mp4')">Video 1</button></li>
+      <li><button onclick="changeVideo('./videos/video02.mp4')">Video 2</button></li>
+      <!-- Agrega más botones de video según la cantidad de videos que desees reproducir -->
+    </ul>
+  </div>
+
+  <script>
+    var videoPlaylist = ['./videos/video01.mp4', './videos/video02.mp4']; // Agrega aquí las rutas de los videos en la lista de reproducción
+    var currentIndex = 0;
+
+    function changeVideo(videoSrc) {
+      var videoPlayer = document.getElementById('video-player');
+      videoPlayer.src = videoSrc;
+      videoPlayer.load();
+      videoPlayer.play();
+    }
+
+    function playNextVideo() {
+      currentIndex = (currentIndex + 1) % videoPlaylist.length;
+      changeVideo(videoPlaylist[currentIndex]);
+    }
+
+    // Reproducir el primer video al cargar la página
+    changeVideo(videoPlaylist[currentIndex]);
+
+    // Evento para reproducir el siguiente video al finalizar el actual
+    document.getElementById('video-player').addEventListener('ended', playNextVideo);
+  </script>
+</body>
+</html>
