@@ -16,12 +16,17 @@
     <ul id="video-playlist" style="display: none;" autoplay>
       <li><button onclick="changeVideo('./videos/video01.mp4')">Video 1</button></li>
       <li><button onclick="changeVideo('./videos/video02.mp4')">Video 2</button></li>
+      <li><button onclick="changeVideo('./videos/Convocatoria-01.jpeg')">Convocatoria Agosto</button></li>
+      <li><button onclick="changeVideo('./videos/listado-curso.jpeg')">Convocatoria Agosto</button></li>
+
+
       <!-- Agrega más botones de video según la cantidad de videos que desees reproducir -->
+
     </ul>
   </div>
 
   <script>
-    var videoPlaylist = ['./videos/video01.mp4', './videos/video02.mp4']; // Agrega aquí las rutas de los videos en la lista de reproducción
+    var videoPlaylist = ['./videos/video01.mp4', './videos/video02.mp4','./videos/Convocatoria-01.jpeg','./videos/listado-curso.jpeg']; // Agrega aquí las rutas de los videos en la lista de reproducción
     var currentIndex = 0;
 
     function changeVideo(videoSrc) {
