@@ -1,126 +1,73 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    />
-    <title>Reproductor de Medios</title>
-  </head>
-  <body>
-    <h1>Reproductor de Medios</h1>
-
-    <div id="media-container">
-      <div id="media-element-container">
-        <video
-          id="video-player"
-          controls
-          width="640"
-          height="360"
-          autoplay
-        >
-          <source src="./videos/video01.mp4" type="video/mp4" />
-          Tu navegador no soporta el video HTML5.
-        </video>
-        <img
-          id="image-viewer"
-          src=""
-          alt="Imagen"
-        />
-      </div>
-      <ul id="media-playlist">
-        <li>
-          <button
-            onclick="changeMedia('./videos/video01.mp4', true)"
-          >
-            Video 1
-          </button>
-        </li>
-        <li>
-          <button
-            onclick="changeMedia('./videos/video02.mp4', true)"
-          >
-            Video 2
-          </button>
-        </li>
-        <li>
-          <button
-            onclick="changeMedia('./videos/Convocatoria-01.jpeg', false)"
-          >
-            Convocatoria Agosto
-          </button>
-        </li>
-        <li>
-          <button
-            onclick="changeMedia('./videos/listado-curso.jpeg', false)"
-          >
-            Listado de Curso
-          </button>
-        </li>
-        <!-- Agrega más botones según la cantidad de videos que desees reproducir -->
-      </ul>
-    </div>
-
-    <script>
-      var mediaPlaylist = [
-        {
-          src: "./videos/video01.mp4",
-          isVideo: true,
-        },
-        {
-          src: "./videos/video02.mp4",
-          isVideo: true,
-        },
-        {
-          src: "./videos/Convocatoria-01.jpeg",
-          isVideo: false,
-        },
-        {
-          src: "./videos/listado-curso.jpeg",
-          isVideo: false,
-        },
-        // Agrega más elementos según la cantidad de medios que desees reproducir
-      ];
-      var currentIndex = 0;
-
-      function changeMedia(mediaSrc, isVideo) {
-        var mediaElementContainer = document.getElementById(
-          "media-element-container"
-        );
-        var videoPlayer = document.getElementById("video-player");
-        var imageViewer = document.getElementById("image-viewer");
-
-        if (isVideo) {
-          videoPlayer.style.display = "block";
-          imageViewer.style.display = "none";
-          videoPlayer.src = mediaSrc;
-          videoPlayer.load();
-          videoPlayer.play();
-        } else {
-          videoPlayer.style.display = "none";
-          imageViewer.style.display = "block";
-          imageViewer.src = mediaSrc;
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visor de Imágenes y Videos</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
         }
-      }
+        .header {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+        }
+        .container {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+        }
+        .left-container, .right-container {
+            width: 48%;
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+        }
+    </style>
+</head>
+<body>
 
-      function playNextMedia() {
-        currentIndex = (currentIndex + 1) % mediaPlaylist.length;
-        changeMedia(
-          mediaPlaylist[currentIndex].src,
-          mediaPlaylist[currentIndex].isVideo
-        );
-      }
+<div class="header">
+    <h1>Visor de Imágenes y Videos Infinitos</h1>
+</div>
 
-      // Reproducir el primer medio al cargar la página
-      changeMedia(
-        mediaPlaylist[currentIndex].src,
-        mediaPlaylist[currentIndex].isVideo
-      );
+<div class="container">
+    <div class="left-container">
+        <h2>Reproductor de Video</h2>
+        <video controls width="100%">
+            <source src="video.mp4" type="video/mp4">
+            Tu navegador no soporta la reproducción de video.
+        </video>
+    </div>
+    <div class="right-container">
+        <h2>Actividades Recientes</h2>
+        <ul>
+            <li>Subida de archivo: imagen1.jpg</li>
+            <li>Visualización de video: video.mp4</li>
+            <!-- Agrega más actividades aquí -->
+        </ul>
+    </div>
+</div>
 
-      // Evento para reproducir el siguiente medio al finalizar el actual
-      var videoPlayer = document.getElementById("video-player");
-      videoPlayer.addEventListener("ended", playNextMedia);
-    </script>
-  </body>
+<div class="container">
+    <h2>Visor de Imágenes</h2>
+    <img src="imagen1.jpg" width="100%" alt="Imagen">
+</div>
+
+<div class="footer">
+    <p>"La vida es lo que pasa mientras estás ocupado haciendo otros planes." - John Lennon</p>
+</div>
+
+</body>
 </html>
