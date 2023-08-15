@@ -10,63 +10,82 @@
             padding: 0;
             font-family: Arial, sans-serif;
             background-color: #f2f2f2;
-        }
-        .header {
-            text-align: center;
-            padding: 20px;
-            background-color: #333;
-            color: white;
-        }
-        .container {
             display: flex;
-            justify-content: space-between;
-            margin: 20px;
-            padding: 20px;
+            min-height: 100vh; /* Mínimo 100% del viewport height */
+        }
+        .left-container {
+           width: 70%;/* Ocupa 50% del ancho */
+            display: flex;
+            flex-direction: column;
+        }
+        header {
+            background-color: white;
+            width: auto;
+            color: white;
+            text-align: center;
+           
+        }
+        .section {
+          flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             background-color: white;
             box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
-        }
-        .left-container, .right-container {
-            width: 48%;
+            padding: 20px;
         }
         .footer {
+          width: auto;
             text-align: center;
-            padding: 20px;
+            padding: 5px;
             background-color: #333;
             color: white;
+        }
+        .right-container {
+          flex: 1; /* Ocupa 50% del ancho */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* Estilos para el encabezado horizontal */
+        .site-title {
+            margin: 0;
+        }
+
+        /* Estilos para ajustar imagen al contenido */
+        .responsive-image {
+            max-width: 100%;
+            height: auto;
         }
     </style>
 </head>
 <body>
 
-<div class="header">
-    <h1>Visor de Imágenes y Videos Infinitos</h1>
-</div>
-
-<div class="container">
-    <div class="left-container">
-        <h2>Reproductor de Video</h2>
-        <video controls width="100%">
+<div class="left-container">
+    <header>
+       <img  src="./videos/logo1024-2.png" width="25%">
+    </header>
+    <div class="section">
+        <!-- <h2>Reproductor de Video</h2> -->
+        <video controls width="80%">
             <source src="video.mp4" type="video/mp4">
             Tu navegador no soporta la reproducción de video.
         </video>
     </div>
-    <div class="right-container">
-        <h2>Actividades Recientes</h2>
-        <ul>
-            <li>Subida de archivo: imagen1.jpg</li>
-            <li>Visualización de video: video.mp4</li>
-            <!-- Agrega más actividades aquí -->
-        </ul>
-    </div>
+    <footer class="footer">
+        <p>"La vida es lo que pasa mientras estás ocupado haciendo otros planes." - John Lennon</p>
+    </footer>
 </div>
 
-<div class="container">
-    <h2>Visor de Imágenes</h2>
-    <img src="imagen1.jpg" width="100%" alt="Imagen">
-</div>
-
-<div class="footer">
-    <p>"La vida es lo que pasa mientras estás ocupado haciendo otros planes." - John Lennon</p>
+<div class="right-container">
+    <aside>      
+              <img class="responsive-image" src="./videos/sema-14-18-agosto.jpeg">           <!-- Agrega más actividades aquí -->
+       
+    </aside>
 </div>
 
 </body>
