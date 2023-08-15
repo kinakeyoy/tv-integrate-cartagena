@@ -14,10 +14,10 @@
       Tu navegador no soporta el video HTML5.
     </video>
     <ul id="video-playlist" style="display: none;" autoplay>
-      <li><button onclick="changeVideo('./videos/video01.mp4')">Video 1</button></li>
-      <li><button onclick="changeVideo('./videos/video02.mp4')">Video 2</button></li>
-      <li><button onclick="changeVideo('./videos/Convocatoria-01.jpeg')">Convocatoria Agosto</button></li>
-      <li><button onclick="changeVideo('./videos/listado-curso.jpeg')">Convocatoria Agosto</button></li>
+      <li><button onclick="changeMedia('./videos/video01.mp4')">Video 1</button></li>
+      <li><button onclick="changeMedia('./videos/video02.mp4')">Video 2</button></li>
+      <li><button onclick="changeMedia('./videos/Convocatoria-01.jpeg')">Convocatoria Agosto</button></li>
+      <li><button onclick="changeMedia('./videos/listado-curso.jpeg')">Convocatoria Agosto</button></li>
 
 
       <!-- Agrega más botones de video según la cantidad de videos que desees reproducir -->
@@ -29,20 +29,29 @@
     var videoPlaylist = ['./videos/video01.mp4', './videos/video02.mp4','./videos/Convocatoria-01.jpeg','./videos/listado-curso.jpeg']; // Agrega aquí las rutas de los videos en la lista de reproducción
     var currentIndex = 0;
 
-    function changeVideo(videoSrc) {
-      var videoPlayer = document.getElementById('video-player');
-      videoPlayer.src = videoSrc;
-      videoPlayer.load();
-      videoPlayer.play();
-    }
+    function changeMedia(mediaSrc, isVideo) {
+  var mediaElement = document.getElementById('media-element');
+  
+  if (isVideo) {
+    mediaElement.innerHTML = `<video id="video-player" controls><source src="${mediaSrc}" type="video/mp4"></video>`;
+  } else {
+    mediaElement.innerHTML = `<img src="${mediaSrc}" alt="Imagen">`;
+  }
+  
+  mediaElement.load();
+
+  if (isVideo) {
+    mediaElement.play();
+  }
+}
 
     function playNextVideo() {
       currentIndex = (currentIndex + 1) % videoPlaylist.length;
-      changeVideo(videoPlaylist[currentIndex]);
+      changeMedia(videoPlaylist[currentIndex]);
     }
 
     // Reproducir el primer video al cargar la página
-    changeVideo(videoPlaylist[currentIndex]);
+    changeMedia(videoPlaylist[currentIndex]);
 
     // Evento para reproducir el siguiente video al finalizar el actual
     document.getElementById('video-player').addEventListener('ended', playNextVideo);
