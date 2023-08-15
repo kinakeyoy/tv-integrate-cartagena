@@ -1,60 +1,126 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Reproductor de Videos 01</title>
-</head>
-<body>
-  <h1>Reproductor de Videos 01</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Reproductor de Medios</title>
+  </head>
+  <body>
+    <h1>Reproductor de Medios</h1>
 
-  <div id="video-container">
-    <video id="video-player" controls width="640" height="360" autoplay>
-      <source src="/videos/video01.mp4" type="video/mp4">
-      Tu navegador no soporta el video HTML5.
-    </video>
-    <ul id="video-playlist" style="display: none;" autoplay>
-      <li><button onclick="changeMedia('./videos/video01.mp4')">Video 1</button></li>
-      <li><button onclick="changeMedia('./videos/video02.mp4')">Video 2</button></li>
-      <li><button onclick="changeMedia('./videos/Convocatoria-01.jpeg')">Convocatoria Agosto</button></li>
-      <li><button onclick="changeMedia('./videos/listado-curso.jpeg')">Convocatoria Agosto</button></li>
+    <div id="media-container">
+      <div id="media-element-container">
+        <video
+          id="video-player"
+          controls
+          width="640"
+          height="360"
+          autoplay
+        >
+          <source src="./videos/video01.mp4" type="video/mp4" />
+          Tu navegador no soporta el video HTML5.
+        </video>
+        <img
+          id="image-viewer"
+          src=""
+          alt="Imagen"
+        />
+      </div>
+      <ul id="media-playlist">
+        <li>
+          <button
+            onclick="changeMedia('./videos/video01.mp4', true)"
+          >
+            Video 1
+          </button>
+        </li>
+        <li>
+          <button
+            onclick="changeMedia('./videos/video02.mp4', true)"
+          >
+            Video 2
+          </button>
+        </li>
+        <li>
+          <button
+            onclick="changeMedia('./videos/Convocatoria-01.jpeg', false)"
+          >
+            Convocatoria Agosto
+          </button>
+        </li>
+        <li>
+          <button
+            onclick="changeMedia('./videos/listado-curso.jpeg', false)"
+          >
+            Listado de Curso
+          </button>
+        </li>
+        <!-- Agrega más botones según la cantidad de videos que desees reproducir -->
+      </ul>
+    </div>
 
+    <script>
+      var mediaPlaylist = [
+        {
+          src: "./videos/video01.mp4",
+          isVideo: true,
+        },
+        {
+          src: "./videos/video02.mp4",
+          isVideo: true,
+        },
+        {
+          src: "./videos/Convocatoria-01.jpeg",
+          isVideo: false,
+        },
+        {
+          src: "./videos/listado-curso.jpeg",
+          isVideo: false,
+        },
+        // Agrega más elementos según la cantidad de medios que desees reproducir
+      ];
+      var currentIndex = 0;
 
-      <!-- Agrega más botones de video según la cantidad de videos que desees reproducir -->
+      function changeMedia(mediaSrc, isVideo) {
+        var mediaElementContainer = document.getElementById(
+          "media-element-container"
+        );
+        var videoPlayer = document.getElementById("video-player");
+        var imageViewer = document.getElementById("image-viewer");
 
-    </ul>
-  </div>
+        if (isVideo) {
+          videoPlayer.style.display = "block";
+          imageViewer.style.display = "none";
+          videoPlayer.src = mediaSrc;
+          videoPlayer.load();
+          videoPlayer.play();
+        } else {
+          videoPlayer.style.display = "none";
+          imageViewer.style.display = "block";
+          imageViewer.src = mediaSrc;
+        }
+      }
 
-  <script>
-    var videoPlaylist = ['./videos/video01.mp4', './videos/video02.mp4','./videos/Convocatoria-01.jpeg','./videos/listado-curso.jpeg']; // Agrega aquí las rutas de los videos en la lista de reproducción
-    var currentIndex = 0;
+      function playNextMedia() {
+        currentIndex = (currentIndex + 1) % mediaPlaylist.length;
+        changeMedia(
+          mediaPlaylist[currentIndex].src,
+          mediaPlaylist[currentIndex].isVideo
+        );
+      }
 
-    function changeMedia(mediaSrc, isVideo) {
-  var mediaElement = document.getElementById('media-element');
-  
-  if (isVideo) {
-    mediaElement.innerHTML = `<video id="video-player" controls><source src="${mediaSrc}" type="video/mp4"></video>`;
-  } else {
-    mediaElement.innerHTML = `<img src="${mediaSrc}" alt="Imagen">`;
-  }
-  
-  mediaElement.load();
+      // Reproducir el primer medio al cargar la página
+      changeMedia(
+        mediaPlaylist[currentIndex].src,
+        mediaPlaylist[currentIndex].isVideo
+      );
 
-  if (isVideo) {
-    mediaElement.play();
-  }
-}
-
-    function playNextVideo() {
-      currentIndex = (currentIndex + 1) % videoPlaylist.length;
-      changeMedia(videoPlaylist[currentIndex]);
-    }
-
-    // Reproducir el primer video al cargar la página
-    changeMedia(videoPlaylist[currentIndex]);
-
-    // Evento para reproducir el siguiente video al finalizar el actual
-    document.getElementById('video-player').addEventListener('ended', playNextVideo);
-  </script>
-</body>
+      // Evento para reproducir el siguiente medio al finalizar el actual
+      var videoPlayer = document.getElementById("video-player");
+      videoPlayer.addEventListener("ended", playNextMedia);
+    </script>
+  </body>
 </html>
