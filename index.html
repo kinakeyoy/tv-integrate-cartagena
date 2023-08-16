@@ -1,229 +1,299 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"
-    />
-    <title>Visor de Imágenes y Videos</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css">
+    <title>Página Dividida</title>
     <style>
-      body {
-        background-color: #2d4082; /* Color azul oscuro estilo Colombia */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            min-height: 100vh;
+        }
+        .left-container {
+            width: 60%;
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+            min-height: 100vh;
+        }
+        .right-container {
+            width: 40%;
+            background-color: #2d4082;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            min-height: 90vh;
+        }
+        .header {
+            width: 100vh;
+            height: 27vh;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            /* background-color: red; */
+        }
 
-        margin: 0;
-        padding: 0;
-        font-family: Arial, sans-serif;
-        /* background-color: #F4C809; */
-        display: flex;
-        min-height: 100vh; /* Mínimo 100% del viewport height */
-      }
-      .left-container {
-        width: 60%; /* Ocupa 50% del ancho */
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        .slider {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            /* height: 100%; */
+            /* background-color: yellow; */
+            position: relative;
+            /* padding: 20px; */
+            
+        }
+
+        .slider img {
+            /* max-width: 100%; */
+            /* max-height: 100%; */
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            background-color: white;
+        }
+        .logo {
+          width: 40%;
+            height: 40%; /* Cambiado a 40% */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
       
-      }
-      header {
-        background-color: #F4C809;
-        width: 70%; /* Ocupa 50% del ancho */
-        display: flex;
-        flex-direction: row;
-        /* justify-content: center; */
-        align-items: center;
-        
-      }
-      .section {
-        flex: 0.75;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        /* background-color: white; */
-        /* box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3); */
-        padding: 10px;
-      }
-      .footer {
-        width: auto;
-        /* border-radius: 10px; */
-        /* text-align: center; */
-        /* padding: 5px; */
-        /* background-color: #333; */
-        color: white;
-        text-align: center;
-        padding: 20px;
-        /* background-color: #2D4082; Color azul oscuro estilo Colombia */
-        color: white;
-      }
-      .right-container {
-        flex: 1; /* Ocupa 50% del ancho */
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 20px;
-        /* background-color: #2D4082;  */
-      }
+        .section {
+            width: 100%;
+            height: 60vh;
+            background-color: #2d4082;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .video-player {
+            width: 100%;
+            height: 100%;
+        }
+        .footer {
+            width: 100%;
+            height: 10vh;
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        .clock {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #2d4082;
+            color: white;
+            font-size: 18px;
+        }
+        .clock iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        iframe {
+          width: 100%;
+            height: 100%;
+            border: none;
+            height: 15vh;
 
-      /* Estilos para el encabezado horizontal */
-      .site-title {
-        margin: 0;
-      }
-
-      /* Estilos para ajustar imagen al contenido */
-      .responsive-image {
-        max-width: 100%;
-        height: auto;
-      }
-      .responsive-relog {
-        max-width: 100%;
-        height: auto;
-        align-items: center;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 20px;
-      }
-      .clock {
-        fill: ffe500;
-        color: #333;
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        font-size: 50px;
-      }
-      .slider {
-        width: 50%; 
-        display: flex; 
-        overflow: hidden;
-        justify-content: center;
-        
-      }
-
-      .slider img {
-        width: 75%; 
-        display: flex;        
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        /* padding: 20px; */
-      }
-      .imgheader{
-        width: 25%; /* Ocupa 50% del ancho */
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 20px;
-      }
+        }
+        .quote {
+            font-size: 24px;
+        }
+        .quote-container {
+            width: 100%;
+            height: 60%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        .responsive-image {
+            width: 70%;
+            height: auto;
+            max-width: 100%;
+        }
+        .responsive-clock {
+          width: 100%;
+            height: 60%;
+            /* display: flex; */
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+      
     </style>
-  </head>
-  <body>
+</head>
+<body>
     <div class="left-container">
-      <header>
-        <img class="imgheader" src="./videos/logo-integrate-alcaldia2.png"  />
-        <div class="slider">
-          <div>
-            <img src="./videos/USAID-Identity.svg.png" alt="Logo-Usaid" />
-          </div>
-          <div>
-            <img 
-              src="./videos/OIM_LOGO-2.png"
-              alt="Logo-Oim"
-            />
-          </div>
-          <div>
-            <img 
-              src="./videos/ACNUR-logo-D37644AE3D-seeklogo.com.png"
-              alt="Logo-Acnur"
-            />
-          </div>
-          <!-- <div><img width="25%" src="./videos/logo-sena.gif" alt="Logo-Sena" /></div>
-        </div> -->
-      </header>
-      <div class="section">
-        <!-- <div class="clock" id="clock"></div> -->
-        <!-- <h2>Reproductor de Video</h2> -->
-        <video controls width="auto">
-          <source src="video.mp4" type="video/mp4" />
-          Tu navegador no soporta la reproducción de video.
-        </video>
-      </div>
-      <footer class="footer">
-        <div id="quote-container">
-          <h1 id="quote">Frase inicial...</h1>
+      <center>
+        <div class="header">          
+            <div class="slider">
+              
+                <div ><img src="./videos/logo-integrate1000x250.png" alt="Imagen 1"></div>
+                <div ><img src="./videos/logo-alcaldia-2.png" alt="Imagen 1"></div>
+                <div ><img src="./videos/usaid-1000x250.png" alt="Imagen 1"></div>
+                <div ><img src="./videos/acnur-original_743x250.png" alt="Imagen 1"></div>
+                <div ><img src="./videos/logo-oim-500x250.jpg" alt="Imagen 1"></div>
+                <div ><img src="./videos/Colombia-Potencia-717x250.png" alt="Imagen 1"></div>
+                <div ><img src="./videos/logo-cancilleria.jpeg" alt="Imagen 1"></div>
+                <div ><img src="./videos/logo-sisben-original_404x250.png" alt="Imagen 1"></div>
+                <!-- <div><img src="./videos/logo-integrate-alcaldia-removebg-preview_300x108.png" alt="Imagen 1"></div>
+                <div><img src="./videos/USAID-Identity.svg_1_300x108.png" alt="Imagen 1"></div>
+                <div><img src="./videos/logo-web-col-vida-cancilleria-azul_300x108.png" alt="Imagen 1"></div>
+                <div><img src="./videos/Colombia-Potencia-de-la-Vida_300x108.png" alt="Imagen 1"></div> -->
+                <!-- <div><img src="./videos/ACNUR-300x108.png" alt="Imagen 1"></div>
+                <div><img src="./videos/ACNUR-300x108.png" alt="Imagen 1"></div>
+                <div><img src="./videos/ACNUR-300x108.png" alt="Imagen 1"></div> -->
+             
+            </div>
         </div>
-      </footer>
-    </div>
+       
+      </center>
+    
+        <div class="section">
+            <video class="video-player" controls>
+                <source src="video.mp4" type="video/mp4">
+                Tu navegador no soporta la reproducción de video.
+            </video>
+           
+        </div>
+        <div class="footer">
+          <div class="quote-container">
+            <p class="quote" id="quote">Frase celebre...</p>
+        </div>
 
+        </div>
+    </div>
     <div class="right-container">
-      <aside>
-        <iframe
-          class="responsive-reloj"
-          width="250"
-          height="125"
-          src="https://reloj-alarma.com/embed/#theme=0&m=0&showdate=1"
-          frameborder="0"
-          allowfullscreen
-        ></iframe>
+        <img class="responsive-image" src="./videos/sema-14-18-agosto.jpeg" alt="Imagen Responsiva">
+        <div style="padding: 5px;" id="clock">
+          <!-- clock widget start -->
+    <div class="DPDC" cityid="7190" lang="es" id="dayspedia_widget_4d6c3e387e29b3e6" host="https://dayspedia.com" ampm="true" nightsign="false" sun="false" style="width: 100%; border-width: 4px; background-image: none; padding: 0px 0px 24px;">
+	  <style media="screen" id="dayspedia_widget_4d6c3e387e29b3e6_style">
+    /*COMMON*/
+.DPDC{display:table;position:relative;box-sizing:border-box;font-size:100.01%;font-style:normal;font-family:Arial;background-position:50% 50%;background-repeat:no-repeat;background-size:cover;overflow:hidden;user-select:none}
+.DPDCh,.DPDCd{width:fit-content;line-height:1.4}
+.DPDCh{margin-bottom:1em}
+.DPDCd{margin-top:.24em}
+.DPDCt{line-height:1}
+.DPDCth,.DPDCtm,.DPDCts{display:inline-block;vertical-align:text-top;white-space:nowrap}
+.DPDCth{min-width:0.6em;text-align:right}
+.DPDCtm,.DPDCts{min-width:1.44em}
+.DPDCtm::before,.DPDCts::before{display:inline-block;content:':';vertical-align:middle;margin:-.34em 0 0 -.07em;width:.32em;text-align:center;opacity:.72;filter:alpha(opacity=72)}
+.DPDCt12{display:inline-block;vertical-align:baseline;top:-0.12em;position:relative;font-size:40%}
+.DPDCdm::after{content:' '}
+.DPDCda::after{content:', '}
+.DPDCdt{margin-right:.48em}
+.DPDCtn{display:inline-block;position:relative;width:13px;height:13px;border:2px solid;border-radius:50%;overflow:hidden}
+.DPDCtn>i{display:block;content:'';position:absolute;right:33%;top:-5%;width:85%;height:85%;border-radius:50%}
+.DPDCs{margin:.96em 0 0 -3px;font-size:90%;line-height:1;white-space:nowrap}
+.DPDCs sup{padding-left:.24em;font-size:65%}
+.DPDCsl::before,.DPDCsl::after{display:inline-block;opacity:.4}
+.DPDCsl::before{content:'~';margin:0 .12em}
+.DPDCsl::after{content:'~';margin:0 .24em}
+.DPDCs svg{display:inline-block;vertical-align:bottom;width:1.2em;height:1.2em;opacity:.48}
+/*CUSTOM*/
 
-        <img class="responsive-image" src="./videos/sema-14-18-agosto.jpeg" />
-        <!-- <div class="clock" id="clock"></div>         Agrega más actividades aquí -->
-      </aside>
+.DPDC{width:auto;padding:24px;background-color:#ffffff;border:1px solid #343434;border-radius:8px} /* widget width, padding, background, border, rounded corners */
+.DPDCh{color:#007DBF;font-weight:normal} /* headline color, font-weight*/
+.DPDCt,.DPDCd{color:#343434;font-weight:bold} /* time & date color, font-weight */
+.DPDCtn{border-color:#343434} /* night-sign color = time & date color */
+.DPDCtn>i{background-color:#343434} /* night-sign color = time & date color */
+.DPDCt{font-size:48px} /* time font-size */
+.DPDCh,.DPDCd{font-size:16px} /* headline & date font-size */
+    </style>
+
+<a class="DPl" href="https://dayspedia.com/time/co/Cartagena/" target="_blank" style="display:block!important;text-decoration:none!important;border:none!important;cursor:pointer!important;background:transparent!important;line-height:0!important;text-shadow:none!important;position:absolute;z-index:1;top:0;right:0;bottom:0;left:0">
+<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 16 16" style="position:absolute;right:8px;bottom:0;width:16px;height:16px">
+  <path style="fill:/*defined*/#007DBF" d="M0,0v16h1.7c-0.1-0.2-0.1-0.3-0.1-0.5c0-0.9,0.8-1.6,1.6-1.6c0.9,0,1.6,0.8,1.6,1.6c0,0.2,0,0.3-0.1,0.5h1.8 c-0.1-0.2-0.1-0.3-0.1-0.5c0-0.9,0.8-1.6,1.6-1.6s1.6,0.8,1.6,1.6c0,0.2,0,0.3-0.1,0.5h1.8c-0.1-0.2-0.1-0.3-0.1-0.5 c0-0.9,0.8-1.6,1.6-1.6c0.9,0,1.6,0.8,1.6,1.6c0,0.2,0,0.3-0.1,0.5H16V0H0z M4.2,8H2V2h2.2c2.1,0,3.3,1.3,3.3,3S6.3,8,4.2,8z M11.4,6.3h-0.8V8H9V2h2.5c1.4,0,2.4,0.8,2.4,2.1C13.9,5.6,12.9,6.3,11.4,6.3z M4.4,3.5H3.7v3h0.7C5.4,6.5,6,6,6,5 C6,4.1,5.4,3.5,4.4,3.5z M11.3,3.4h-0.8V5h0.8c0.6,0,0.9-0.3,0.9-0.8C12.2,3.7,11.9,3.4,11.3,3.4z">
+  </path>
+</svg>
+<span title="DaysPedia.com" style="position:absolute;right:28px;bottom:6px;height:10px;width:60px;overflow:hidden;text-align:right;font:normal 10px/10px Arial,sans-serif!important;color:/*defined*/#007DBF">Powered&nbsp;by DaysPedia.com</span>
+</a>
+<div class="DPDCh" style="font-size: 12px; font-weight: bold; text-align: center; margin-left: auto; margin-right: auto;">Hora Actual en Cartagena de Indias</div>
+<div class="DPDCt" style="font-weight: bold; font-size: 64px; text-align: center; margin-left: auto; margin-right: auto;">
+<span class="DPDCth">2</span><span class="DPDCtm">15</span><span class="DPDCts" style="display: inline-block;">46</span><span class="DPDCt12">pm</span>
+</div>
+<div class="DPDCd" style="font-weight: bold; font-size: 12px; text-align: center; margin-left: auto; margin-right: auto;">
+<span class="DPDCdt">mié, 16 de agosto</span><span class="DPDCtn" style="display: none; width: 10px; height: 10px;"><i></i></span>
+</div>
+
+<div class="DPDCs" style="font-size: 12px; display: none; text-align: center; margin-left: auto; margin-right: auto;">
+<span class="DPDCsr">
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24"><path d="M12,4L7.8,8.2l1.4,1.4c0,0,0.9-0.9,1.8-1.8V14h2c0,0,0-3.3,0-6.2l1.8,1.8l1.4-1.4L12,4z"></path><path d="M6.8,15.3L5,13.5l-1.4,1.4l1.8,1.8L6.8,15.3z M4,21H1v2h3V21z M20.5,14.9L19,13.5l-1.8,1.8l1.4,1.4L20.5,14.9z M20,21v2h3 v-2H20z M6.1,23C6,22.7,6,22.3,6,22c0-3.3,2.7-6,6-6s6,2.7,6,6c0,0.3,0,0.7-0.1,1H6.1z"></path></svg>5:52<sup style="display: inline;">am</sup>
+</span>
+<span class="DPDCsl">12:28</span>
+<span class="DPDCss">
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24"><path d="M12,14L7.8,9.8l1.4-1.4c0,0,0.9,0.9,1.8,1.8V4h2c0,0,0,3.3,0,6.2l1.8-1.8l1.4,1.4L12,14z"></path><path d="M6.8,15.3L5,13.5l-1.4,1.4l1.8,1.8L6.8,15.3z M4,21H1v2h3V21z M20.5,14.9L19,13.5l-1.8,1.8l1.4,1.4L20.5,14.9z M20,21v2h3 v-2H20z M6.1,23C6,22.7,6,22.3,6,22c0-3.3,2.7-6,6-6s6,2.7,6,6c0,0.3,0,0.7-0.1,1H6.1z"></path></svg>6:20<sup style="display: inline;">pm</sup>
+</span>
+</div>
+<script>
+var s, t; s = document.createElement("script"); s.type = "text/javascript";
+s.src = "//cdn.dayspedia.com/js/dwidget.min.vc01b6c64.js";
+t = document.getElementsByTagName('script')[0]; t.parentNode.insertBefore(s, t);
+s.onload = function() {
+  window.dwidget = new window.DigitClock();
+  window.dwidget.init("dayspedia_widget_4d6c3e387e29b3e6");
+};
+</script>
+<!--/DPDC-->
+</div><!--Dayspedia.com widget ENDS-->          <!-- clock widget end -->
+        
+          
+        </div>
+        </div>
     </div>
-  </body>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-  <script>
-    $(document).ready(function () {
-      $(".slider").slick({
-        autoplay: true,
-        autoplaySpeed: 1000, // Cambia cada 5 segundos
-        arrows: false,
-        dots: false,
-        infinite: true,
-        speed: 500,
-        fade: true,
-        cssEase: "linear",
-      });
-    });
-  </script>
-  <script>
-    const quotes = [
-      "Caminante, no hay camino, se hace camino al andar.- Antonio Machado",
-      "La migración es el lenguaje común de la humanidad.",
-      "La migración es la respuesta al cambio.",
-      "La migración es el motor del progreso.",
-      "La migración es la valentía de buscar nuevas oportunidades.",
-      "La migración es el puente que conecta culturas.",
-      "La migración es la búsqueda de un mejor mañana.",
-      "La migración es la historia en movimiento.",
-      "La migración es el reflejo de la resiliencia humana.",
-      "La migración es la fuerza que rompe barreras.",
-    ];
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".slider").slick({
+                autoplay: true,
+                autoplaySpeed: 1000,
+                arrows: false,
+                dots: false,
+                infinite: true,
+                speed: 500,
+                fade: true,
+                cssEase: "linear",
+            });
 
-    const quoteContainer = document.getElementById("quote-container");
-    const quoteElement = document.getElementById("quote");
+            const quotes = [
+                "Frase 1",
+                "Frase 2",
+                "Frase 3",
+                "Frase 4",
+                "Frase 5",
+            ];
 
-    let index = 0;
+            const quoteElement = document.getElementById("quote");
+            let index = 0;
 
-    function changeQuote() {
-      quoteElement.textContent = quotes[index];
-      index = (index + 1) % quotes.length;
-    }
+            function changeQuote() {
+                quoteElement.textContent = quotes[index];
+                index = (index + 1) % quotes.length;
+            }
 
-    setInterval(changeQuote, 6000); // Cambia cada 5 minutos (300000 ms)
-
-    // Cambia la primera frase
-    changeQuote();
-  </script>
+            setInterval(changeQuote, 3000); // Cambia cada 3 segundos
+            changeQuote();
+        });
+    </script>
+</body>
 </html>
