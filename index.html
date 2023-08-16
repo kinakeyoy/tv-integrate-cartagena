@@ -1,92 +1,229 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"
+    />
     <title>Visor de Imágenes y Videos</title>
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
-            display: flex;
-            min-height: 100vh; /* Mínimo 100% del viewport height */
-        }
-        .left-container {
-           width: 70%;/* Ocupa 50% del ancho */
-            display: flex;
-            flex-direction: column;
-        }
-        header {
-            background-color: white;
-            width: auto;
-            color: white;
-            text-align: center;
-           
-        }
-        .section {
-          flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background-color: white;
-            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
-            padding: 20px;
-        }
-        .footer {
-          width: auto;
-            text-align: center;
-            padding: 5px;
-            background-color: #333;
-            color: white;
-        }
-        .right-container {
-          flex: 1; /* Ocupa 50% del ancho */
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
+      body {
+        background-color: #2d4082; /* Color azul oscuro estilo Colombia */
 
-        /* Estilos para el encabezado horizontal */
-        .site-title {
-            margin: 0;
-        }
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        /* background-color: #F4C809; */
+        display: flex;
+        min-height: 100vh; /* Mínimo 100% del viewport height */
+      }
+      .left-container {
+        width: 60%; /* Ocupa 50% del ancho */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      
+      }
+      header {
+        background-color: #F4C809;
+        width: 70%; /* Ocupa 50% del ancho */
+        display: flex;
+        flex-direction: row;
+        /* justify-content: center; */
+        align-items: center;
+        
+      }
+      .section {
+        flex: 0.75;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        /* background-color: white; */
+        /* box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3); */
+        padding: 10px;
+      }
+      .footer {
+        width: auto;
+        /* border-radius: 10px; */
+        /* text-align: center; */
+        /* padding: 5px; */
+        /* background-color: #333; */
+        color: white;
+        text-align: center;
+        padding: 20px;
+        /* background-color: #2D4082; Color azul oscuro estilo Colombia */
+        color: white;
+      }
+      .right-container {
+        flex: 1; /* Ocupa 50% del ancho */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        /* background-color: #2D4082;  */
+      }
 
-        /* Estilos para ajustar imagen al contenido */
-        .responsive-image {
-            max-width: 100%;
-            height: auto;
-        }
+      /* Estilos para el encabezado horizontal */
+      .site-title {
+        margin: 0;
+      }
+
+      /* Estilos para ajustar imagen al contenido */
+      .responsive-image {
+        max-width: 100%;
+        height: auto;
+      }
+      .responsive-relog {
+        max-width: 100%;
+        height: auto;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+      }
+      .clock {
+        fill: ffe500;
+        color: #333;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 50px;
+      }
+      .slider {
+        width: 50%; 
+        display: flex; 
+        overflow: hidden;
+        justify-content: center;
+        
+      }
+
+      .slider img {
+        width: 75%; 
+        display: flex;        
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        /* padding: 20px; */
+      }
+      .imgheader{
+        width: 25%; /* Ocupa 50% del ancho */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+      }
     </style>
-</head>
-<body>
-
-<div class="left-container">
-    <header>
-       <img  src="./videos/logo1024-2.png" width="25%">
-    </header>
-    <div class="section">
+  </head>
+  <body>
+    <div class="left-container">
+      <header>
+        <img class="imgheader" src="./videos/logo-integrate-alcaldia2.png"  />
+        <div class="slider">
+          <div>
+            <img src="./videos/USAID-Identity.svg.png" alt="Logo-Usaid" />
+          </div>
+          <div>
+            <img 
+              src="./videos/OIM_LOGO-2.png"
+              alt="Logo-Oim"
+            />
+          </div>
+          <div>
+            <img 
+              src="./videos/ACNUR-logo-D37644AE3D-seeklogo.com.png"
+              alt="Logo-Acnur"
+            />
+          </div>
+          <!-- <div><img width="25%" src="./videos/logo-sena.gif" alt="Logo-Sena" /></div>
+        </div> -->
+      </header>
+      <div class="section">
+        <!-- <div class="clock" id="clock"></div> -->
         <!-- <h2>Reproductor de Video</h2> -->
-        <video controls width="80%">
-            <source src="video.mp4" type="video/mp4">
-            Tu navegador no soporta la reproducción de video.
+        <video controls width="auto">
+          <source src="video.mp4" type="video/mp4" />
+          Tu navegador no soporta la reproducción de video.
         </video>
+      </div>
+      <footer class="footer">
+        <div id="quote-container">
+          <h1 id="quote">Frase inicial...</h1>
+        </div>
+      </footer>
     </div>
-    <footer class="footer">
-        <p>"La vida es lo que pasa mientras estás ocupado haciendo otros planes." - John Lennon</p>
-    </footer>
-</div>
 
-<div class="right-container">
-    <aside>      
-              <img class="responsive-image" src="./videos/sema-14-18-agosto.jpeg">           <!-- Agrega más actividades aquí -->
-       
-    </aside>
-</div>
+    <div class="right-container">
+      <aside>
+        <iframe
+          class="responsive-reloj"
+          width="250"
+          height="125"
+          src="https://reloj-alarma.com/embed/#theme=0&m=0&showdate=1"
+          frameborder="0"
+          allowfullscreen
+        ></iframe>
 
-</body>
+        <img class="responsive-image" src="./videos/sema-14-18-agosto.jpeg" />
+        <!-- <div class="clock" id="clock"></div>         Agrega más actividades aquí -->
+      </aside>
+    </div>
+  </body>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $(".slider").slick({
+        autoplay: true,
+        autoplaySpeed: 1000, // Cambia cada 5 segundos
+        arrows: false,
+        dots: false,
+        infinite: true,
+        speed: 500,
+        fade: true,
+        cssEase: "linear",
+      });
+    });
+  </script>
+  <script>
+    const quotes = [
+      "Caminante, no hay camino, se hace camino al andar.- Antonio Machado",
+      "La migración es el lenguaje común de la humanidad.",
+      "La migración es la respuesta al cambio.",
+      "La migración es el motor del progreso.",
+      "La migración es la valentía de buscar nuevas oportunidades.",
+      "La migración es el puente que conecta culturas.",
+      "La migración es la búsqueda de un mejor mañana.",
+      "La migración es la historia en movimiento.",
+      "La migración es el reflejo de la resiliencia humana.",
+      "La migración es la fuerza que rompe barreras.",
+    ];
+
+    const quoteContainer = document.getElementById("quote-container");
+    const quoteElement = document.getElementById("quote");
+
+    let index = 0;
+
+    function changeQuote() {
+      quoteElement.textContent = quotes[index];
+      index = (index + 1) % quotes.length;
+    }
+
+    setInterval(changeQuote, 6000); // Cambia cada 5 minutos (300000 ms)
+
+    // Cambia la primera frase
+    changeQuote();
+  </script>
 </html>
